@@ -38,7 +38,8 @@ Um bot criado com Python que permite baixar músicas e playlists diretamente do 
 ---
 
 ## ☕ Considerações finais...
-Este projeto nasceu da ideia de facilitar o download de músicas via Telegram de forma simples, direta e funcional.
+Este projeto nasceu da ideia de facilitar o download de músicas via Telegram de forma simples, git pull origin main --no-rebase
+ e funcional.
 Ainda está em desenvolvimento, mas já cumpre bem o papel principal — e novas funcionalidades estão a caminho.
 
 Fique à vontade para usar, adaptar ou contribuir. E claro... aproveita o som 🎧
