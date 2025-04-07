@@ -6,7 +6,7 @@ Um bot criado com Python que permite baixar músicas e playlists diretamente do 
 
 ## 🚀 Funcionalidades
 
-- `/start` — Dá aquele salve inicial 🤝
+- `/start` — Inicia a conversa com o BOT
 - `/help` — Mostra os comandos disponíveis
 - `/download_music <url>` — Baixa e envia o áudio de um vídeo do YouTube 🎧
 
