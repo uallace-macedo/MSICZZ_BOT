@@ -8,7 +8,7 @@ Um bot criado com Python que permite baixar músicas e playlists diretamente do 
 
 - `/start` — Inicia a conversa com o BOT
 - `/help` — Mostra os comandos disponíveis
-- `/download_music <url>` — Baixa e envia o áudio de um vídeo do YouTube 🎧
+- `/download_music <url>` — Baixa e envia o áudio de um vídeo do YouTube 🎧 [... em breve]
 
 ---
 
@@ -16,15 +16,13 @@ Um bot criado com Python que permite baixar músicas e playlists diretamente do 
 
 - **Python 3.10+**
 - [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot)
-- [pytubefix](https://github.com/nficano/pytube) (fork ativo do pytube)
-- `uuid` para nomes únicos temporários
-- `shutil`, `os`, `re` e outros nativos
+- [pytubefix](https://github.com/nficano/pytube)
 
 ---
 
 ## 🔒 Notas
 
-- Os downloads são organizados por ID do usuário dentro da pasta downloads/, evitando conflitos entre usuários.
+- Os downloads serão organizados por ID do usuário dentro da pasta downloads/, evitando conflitos entre usuários.
 
 ---
 
@@ -38,8 +36,7 @@ Um bot criado com Python que permite baixar músicas e playlists diretamente do 
 ---
 
 ## ☕ Considerações finais...
-Este projeto nasceu da ideia de facilitar o download de músicas via Telegram de forma simples, git pull origin main --no-rebase
- e funcional.
+Este projeto nasceu da ideia de facilitar o download de músicas via Telegram de forma simples, e funcional.
 Ainda está em desenvolvimento, mas já cumpre bem o papel principal — e novas funcionalidades estão a caminho.
 
 Fique à vontade para usar, adaptar ou contribuir. E claro... aproveita o som 🎧
