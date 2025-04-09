@@ -17,6 +17,7 @@ Um bot criado com Python que permite baixar músicas e playlists diretamente do 
 - **Python 3.10+**
 - [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot)
 - [pytubefix](https://github.com/nficano/pytube)
+- [pytest](https://github.com/pytest-dev/pytest)
 
 ---
 
