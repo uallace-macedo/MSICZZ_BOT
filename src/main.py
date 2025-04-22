@@ -7,7 +7,6 @@ def main():
   application = ApplicationBuilder().token(BOT_TOKEN).build()
 
   for handler in handlers:
-    print(handler)
     application.add_handler(handler)
 
   print('[🤖] Polling...')
