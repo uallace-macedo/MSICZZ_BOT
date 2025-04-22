@@ -1,4 +1,3 @@
-from pprint import pprint
 from telegram import Update
 from telegram.ext import ContextTypes
 from utils.register import register_command
@@ -25,14 +24,3 @@ handler = register_command(
   id='help',
   desc='Mostra os comandos disponíveis'
 )
-
-
-"""
-[{'category': '📦 Básico',
-  'commands': [{'cmd_handler': CommandHandler[callback=help_command],
-                'description': 'Mostra os comandos disponíveis',
-                'id': ['help']},
-               {'cmd_handler': CommandHandler[callback=start_command],
-                'description': 'Comando de inicio',
-                'id': ['start']}]}]
-"""
