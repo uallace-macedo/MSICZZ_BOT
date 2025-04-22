@@ -1,7 +1,9 @@
-from .help_command import handler as help_handler
-from .start_command import handler as start_handler
+from pathlib import Path
+from utils.commands import get_commands
 
-handlers = [
-  help_handler['cmd_handler'],
-  start_handler['cmd_handler']
-]
+path = Path(__file__).parent
+
+module_data = { 'category': '📦 Básico' }
+handlers = get_commands(path, __name__)
+
+module_data['commands'] = handlers

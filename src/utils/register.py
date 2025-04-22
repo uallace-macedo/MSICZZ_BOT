@@ -8,7 +8,7 @@ def register_command(
 ) -> Dict[str, Union[list[str], BaseHandler, str]]:
 
   if not isinstance(id, (list, str)):
-    raise ValueError('Parâmetro <id> precisa ser uma string/lista de strings.')
+    raise ValueError('<id> parameter must be a string or list[str]')
 
   cmds = [id] if isinstance(id, str) else id
   handler = CommandHandler(cmds, func)
