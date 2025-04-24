@@ -91,3 +91,31 @@
   - As músicas após baixadas devem ser armazenadas em uma pasta chamada `downloads/`
   - As músicas baixadas por usuário devem ficar salvas em uma pasta nomeada com o ID do usuário `downloads/{user_id}`
   - Após o download e envio da música(s) a pasta com o ID do usuário deve ser deletada.
+
+---
+
+## 📅 Dia 4
+
+### ✅ Feito hoje:
+
+### 🎯 Aprendizados e desafios
+
+#### Geral
+
+#### 🗃️ Biblioteca os
+- Biblioteca para manipulação de diretórios, arquivos e OS.
+- Comandos comuns:
+  - **Diretórios e arquivos**
+    - `os.curdir`: retorna o diretório atual `.`
+      - usado geralmente com o `os.path.join()`
+    - `os.getcwd()`: retorna o caminho absoluto do diretório atual
+    - `os.mkdir()`: cria uma pasta
+      - `os.makedirs()`: cria pastas recursivamente
+    - `os.rmdir()`: deleta uma pasta
+    - `os.remove()`: deleta um arquivo
+  - **Caminhos**
+    - `os.path.join()`: retorna um caminho juntando os parâmetros passados
+    - `os.path.isdir()`: verifica se o caminho passado é um diretório existe (**apenas diretórios**)
+    - `os.path.exists()`: verifica se o caminho/arquivo existe
+
+#### ✂️ Biblioteca re
