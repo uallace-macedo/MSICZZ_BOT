@@ -1,6 +1,6 @@
 # 📘 Diário de Bordo – MsiczzBOT
 
-> Última atualização: 22/04/2025
+> Última atualização: 28/04/2025
 > Autor: Jonathas Uallace Macedo Santos
 > Status: 🌀 Em andamento
 
@@ -98,6 +98,15 @@
 
 ### ✅ Feito hoje:
 
+- Adicionado comando para baixar música.
+  - As músicas são armazenadas em uma pasta `downloads/`
+  - As músicas baixadas ficam salvas em uma pasta nomeada com o ID do usuário
+  - Após o download e envio da música, a pasta com o ID é deletada
+
+- Adicionados comandos para criação e exclusão de pastas com `os`
+- Adicionados comandos com `regex` e `unidecode` para formatação de textos (titulos e extração de URL)
+
+
 ### 🎯 Aprendizados e desafios
 
 #### Geral
@@ -118,4 +127,55 @@
     - `os.path.isdir()`: verifica se o caminho passado é um diretório existe (**apenas diretórios**)
     - `os.path.exists()`: verifica se o caminho/arquivo existe
 
+- **Adicional** `shutil`
+  - Biblioteca utilizada para apagar pastas e conteúdos internos sem necessidade de esvaziar a pasta primeiro
+    ```js
+    if os.path.exists(folder_path):
+    shutil.rmtree(folder_path)
+    ```
+
 #### ✂️ Biblioteca re
+- Expressões regulares (regex) são padrões que descrevem **conjuntos de strings**
+- Utilizamos `re` para procurar, validar, substituir ou extrair partes de texto que seguem um determinado padrão
+
+- **Raw string**: r'\t'
+
+**Caracteres especiais**:
+  - *Correspondências*:
+    - `.`: qualquer caracter com exceção de nova linha
+    - `\d`: digitos (0-9)
+    - `\D`: não é um digito que se encaixe no `\d`
+    - `\w`: caracteres (a-z, A-Z, 0-9, _)
+    - `\W`: não é um caracter que se encaixe no `\w`
+    - `\s`: espaço em branco (espaço, tab, nova linha)
+    - `\S`: não é espaço em branco (espaço, tab, nova linha)
+
+  - *Âncoras*:
+    - `\b`: limite da palavra (espaço em branco ou caractere não-alfanumérico) [o "word boundary", precisa estar antes]
+    - `\B`: não tem um limitador ("word boundary") antes dele
+    - `^`: Inicio de uma string
+    - `$`: Fim de uma string
+
+  - *Agrupadores*:
+    - `[]`: caracteres específicos. [apenas um digito é levado em consideração]
+    - `-`: define um range
+    - `[^]`: nega o que estiver dentro dos colchetes
+    - `|`: ou
+    - `()`: grupo
+
+  - *Quantificadores:*
+    - `*`: 0+
+    - `+`: 1+
+    - `?`: 0 ou 1
+    - `{3}`: número exato
+    - `{3,4}`: range (minimo, máximo)
+
+- **Adicional** `unicode`: transforma caracteres com acento para sem acento
+
+---
+
+### 🧭 Próximos passos:
+- Adicionar tratamento de erros ao comando de baixar músicas
+- Adicionar comando para downloads de playlist
+
+---
