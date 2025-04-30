@@ -42,6 +42,22 @@ Um bot criado com Python que permite baixar músicas e playlists diretamente do 
   module_data['commands'] = handlers
   ```
   Exemplo de uso: `src/commands/simple/__init__.py`
+
+- É necessário em cada comando haver um atributo "`handler`", que deve ser gerado com a função `register_command()`.
+  ```js
+  from telegram import Update
+  from telegram.ext import ContextTypes
+  from utils.register import register_command
+
+  async def start_command(update: Update, _: ContextTypes.DEFAULT_TYPE):
+    ...
+
+  handler = register_command(
+    func=start_command,
+    id='start',
+    desc='Comando de inicio'
+  )
+  ```
 ---
 
 ## 🧠 Possibilidades futuras
