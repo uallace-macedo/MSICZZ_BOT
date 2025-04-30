@@ -1,50 +1,36 @@
-import os
-import re
-
-from pytubefix import YouTube
-
 from telegram import Update
 from telegram.ext import ContextTypes
 
 from utils.register import register_command
-from utils.folders import create_users_folder, delete_users_folder
-from utils.text_format import clear_title
+from utils.folders import delete_users_folder
+from utils.download import download_music
+from utils.text_format import get_final_url
 
 
 async def download_music_command(update: Update, _: ContextTypes.DEFAULT_TYPE):
-  url_pattern: str = re.compile(r'<*https:\/\/(www\.)?(youtu\.be|youtube\.com)\/[^>]+>*')
   sent_url: str = update.message.text
+  final_url = get_final_url(sent_url)
 
-  url = re.search(url_pattern, sent_url)
-  if not url:
-    await update.message.reply_text('❌ Por favor, forneça uma URL válida!')
-    return
+  if 'error' in final_url:
+    await update.message.reply_text(final_url['error'])
 
-  final_url = re.sub(r'[<>]', '', url.group(0))
+  status_message = await update.message.reply_text('[⏳] Iniciando o download...')
   download = download_music(final_url, update)
 
+  if 'error' in download:
+    await status_message.edit_text(download['error'])
+    return
+
+  await send_music(update, status_message, download)
+
+
+async def send_music(update, status_message, download):
   song_path = download['song_path']
   title = download['title']
 
+  await status_message.edit_text('[🎉] Download finalizado!')
   await update.message.reply_audio(audio=open(song_path, 'rb'), title=title)
   delete_users_folder(update.effective_user.id)
-
-
-def download_music(video_url: str, update: Update):
-
-  user_id: int = update.effective_user.id
-  users_folder = create_users_folder(user_id)
-
-  yt = YouTube(video_url)
-  title: str = yt.title
-
-  cleared_title = clear_title(title)
-  audio_stream = yt.streams.filter(only_audio=True).first()
-  audio_stream.download(users_folder, f'{cleared_title}.mp3')
-
-  song_path: str = os.path.join(users_folder, cleared_title) + '.mp3'
-  return {'song_path': song_path, 'title': title}
-
 
 
 handler = register_command(
