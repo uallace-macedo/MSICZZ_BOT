@@ -21,6 +21,7 @@ async def download_playlist_command(update: Update, _: ContextTypes.DEFAULT_TYPE
 
   if 'error' in final_url:
     await update.message.reply_text(final_url['error'])
+    return
 
   status_message = await update.message.reply_text('[⏳] Iniciando o download...')
   pl = Playlist(final_url)
