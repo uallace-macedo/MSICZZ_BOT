@@ -178,7 +178,7 @@
 
 ---
 
-## 📅 Dia 5
+## 📅 Dia 5 - 6
 
 ### ✅ Feito hoje:
 - Adicionado feedback ao download da música
