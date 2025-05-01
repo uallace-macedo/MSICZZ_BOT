@@ -274,12 +274,12 @@ for dirpath, dirnames, filenames in os.walk('caminho_inicial'):
 ```
 
 - `dirpath`: o caminho atual (string) da pasta que está sendo visitada.
-- `dirnames`: lista com os nomes das subpastas dentro de `dirpath`.
-- `filenames`: lista com os nomes dos arquivos dentro de `dirpath`.
+- `dirnames`: lista com os nomes das subpastas dentro de `dirpath`
+- `filenames`: lista com os nomes dos arquivos dentro de `dirpath`
 - `os.path.relpath()`: retorna a "diferença" entre os parâmetros
 
 ### 🧭 Próximos passos:
-- Adicionar possibilidade de adicionar várias músicas fora de uma playlist.
-- Adicionar botões de confirmação de download, mostrando informações sobre o vídeo/playlist.
+- Adicionar explicação detalhada de comando `/help command`
+- Adicionar possibilidade de adicionar várias músicas fora de uma playlist
 
 ---
