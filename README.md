@@ -8,8 +8,8 @@ Um bot criado com Python que permite baixar músicas e playlists diretamente do 
 
 - `/start` — Inicia a conversa com o BOT
 - `/help` — Mostra os comandos disponíveis
-- `/dwm <url>` — Baixa uma música do YouTube 🎧
-- `/dwp <url>` — Baixa uma playlist do YouTube 🎸
+- `/dwm <url>` — Baixa uma música do YouTube
+- `/dwp <url>` — Baixa uma playlist do YouTube
 
 ---
 
@@ -61,7 +61,6 @@ Um bot criado com Python que permite baixar músicas e playlists diretamente do 
 
 ## 🧠 Possibilidades futuras
 - Botões de ação (iniciar ou cancelar download)
-- Sistema de fila e limitação de uso por usuário
 
 ---
 
