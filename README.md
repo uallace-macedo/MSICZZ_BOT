@@ -9,7 +9,7 @@ Um bot criado com Python que permite baixar músicas e playlists diretamente do 
 - `/start` — Inicia a conversa com o BOT
 - `/help` — Mostra os comandos disponíveis
 - `/dwm <url>` — Baixa uma música do YouTube 🎧
-- `/dwp <url>` — Baixa uma playlist do YouTube 🎸 [em breve...]
+- `/dwp <url>` — Baixa uma playlist do YouTube 🎸
 
 ---
 
@@ -19,7 +19,6 @@ Um bot criado com Python que permite baixar músicas e playlists diretamente do 
 - [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot)
 - [pytubefix](https://github.com/nficano/pytube)
 - [pytest](https://github.com/pytest-dev/pytest)
-- [unidecode](https://www.npmjs.com/package/unidecode)
 
 ---
 

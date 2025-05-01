@@ -4,7 +4,7 @@ from pytubefix import YouTube
 from pytubefix.exceptions import VideoUnavailable, VideoPrivate, MembersOnly, AgeRestrictedError, RegexMatchError, PytubeFixError
 
 from utils.folders import create_users_folder
-from utils.text_format import clear_title
+
 
 def download_music(video_url: str, update: Update):
   yt: YouTube
@@ -23,11 +23,10 @@ def download_music(video_url: str, update: Update):
 
     title: str = yt.title
 
-    cleared_title = clear_title(title)
     audio_stream = yt.streams.filter(only_audio=True).first()
-    audio_stream.download(users_folder, f'{cleared_title}.mp3')
+    audio_stream.download(users_folder, f'{title}.mp3')
 
-    song_path: str = os.path.join(users_folder, cleared_title) + '.mp3'
+    song_path: str = os.path.join(users_folder, title) + '.mp3'
     return {'song_path': song_path, 'title': title}
   except VideoUnavailable:
     return {'error': '[❌] Não foi possível fazer o download. Parece que este vídeo está indisponível...', 'title': title}

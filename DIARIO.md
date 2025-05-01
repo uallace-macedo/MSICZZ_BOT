@@ -1,6 +1,6 @@
 # 📘 Diário de Bordo – MsiczzBOT
 
-> Última atualização: 28/04/2025
+> Última atualização: 30/04/2025
 > Autor: Jonathas Uallace Macedo Santos
 > Status: 🌀 Em andamento
 
@@ -97,7 +97,6 @@
 ## 📅 Dia 4
 
 ### ✅ Feito hoje:
-
 - Adicionado comando para baixar música.
   - As músicas são armazenadas em uma pasta `downloads/`
   - As músicas baixadas ficam salvas em uma pasta nomeada com o ID do usuário
@@ -172,10 +171,114 @@
 
 - **Adicional** `unicode`: transforma caracteres com acento para sem acento
 
+### 🧭 Próximos passos:
+- Adicionar feedback (mensagem) ao download de música
+- Adicionar tratamento de erros ao comando de baixar músicas
+- Adicionar comando para download de playlist
+
 ---
 
+## 📅 Dia 5
+
+### ✅ Feito hoje:
+- Adicionado feedback ao download da música
+- Adicionados tratamento de erros ao comando de baixar músicas
+- Adicionado `download_music` ao `utils`, para evitar repetição e aumentar reusabilidade de código
+- Adicionado comando `download_playlist`
+- Adicionada pasta `downloads/zips` para centralizar arquivos zip (playlists)
+- Adicionado `zip_file` ao `utils` para zipar playlists baixadas, evitando spam ao enviar a playlist para o usuário
+- Removida função para limpar títulos, pois o Telegram tem bom suporte a uma vasta gama de caracteres.
+
+### 🎯 Aprendizados e desafios
+
+#### Geral
+
+#### 📁 Zipfile
+
+- Parâmetros comuns:
+  - `zf.write(filename, arcname)`
+    - `filename`: caminho para o arquivo
+    - `arcname`: nome do arquivo quando zipado
+
+- Para zipar um arquivo
+  ```js
+  import os
+  from zipfile import ZipFile, ZIP_DEFLATED
+
+  pasta_destino: str = os.path.join(os.curdir, 'pasta_destino', 'nome_zip.zip')
+  referencia_zip: ZipFile = ZipFile(pasta_destino, 'w', compression=ZIP_DEFLATED)
+  path_arquivo_toZIP: str = os.path.join(os.curdir, 'arquivo.py')
+
+  referencia_zip.write(path_arquivo_toZIP, 'nome-zip')
+  referencia_zip.close()
+  ```
+
+- Para zipar vários arquivos
+  ```js
+  import os
+  from zipfile import ZipFile, ZIP_DEFLATED
+
+  def compactar_tudo(diretorio):
+    arquivos = os.listdir(diretorio)
+
+    for arquivo in arquivos:
+      archive_name: str = arquivo[0:arquivo.rfind('.')]
+      destiny: str = os.path.join(os.curdir, 'musics', f'{archive_name}.zip')
+      zip_reference: ZipFile = ZipFile(destiny, 'w', compression=ZIP_DEFLATED)
+      zip_reference.write(os.path.join(diretorio, arquivo), arquivo)
+      zip_reference.close()
+
+    return len(arquivos)
+
+  if __name__ == '__main__':
+    pasta = input('Digite o endereço da pasta a ser compactada (com "/" para subdiretorios): ')
+    pasta = pasta.strip().split('/')
+
+    final_path: str = os.path.join(*pasta)
+    amount = compactar_tudo(final_path)
+    print(f'Arquivos compactados: {amount}.')
+  ```
+
+- Para zipar pasta + subpastas
+  ```js
+  import os
+  from zipfile import ZipFile, ZIP_DEFLATED
+
+  def zip_folder(directory, zip_name):
+    with ZipFile(zip_name, 'w', compression=ZIP_DEFLATED) as zf:
+      for dirpath, _, filenames in os.walk(directory):
+        for filename in filenames:
+          full_path: str = os.path.join(dirpath, filename)
+          relative_path: str = os.path.relpath(full_path, directory)
+
+          zf.write(full_path, relative_path)
+
+  if __name__ == '__main__':
+    folder: str = str(input('Digite o path (com "/" para subdiretorios): '))
+    name: str = str(input('Digite o nome do zip: '))
+
+    if not name.endswith('.zip'):
+      name = name + '.zip'
+
+    zip_folder(folder, name)
+  ```
+
+#### 🗺️ os.walk
+
+Função do módulo `os` que varre (recursivamente) todos os diretórios e arquivos a partir de uma pasta inicial
+
+Gera uma tupla com: `dirpath`, `dirnames` e `filenames`
+
+```js
+for dirpath, dirnames, filenames in os.walk('caminho_inicial'):
+```
+
+- `dirpath`: o caminho atual (string) da pasta que está sendo visitada.
+- `dirnames`: lista com os nomes das subpastas dentro de `dirpath`.
+- `filenames`: lista com os nomes dos arquivos dentro de `dirpath`.
+- `os.path.relpath()`: retorna a "diferença" entre os parâmetros
+
 ### 🧭 Próximos passos:
-- Adicionar tratamento de erros ao comando de baixar músicas
-- Adicionar comando para downloads de playlist
+- Adicionar botões de confirmação de download, mostrando informações sobre o vídeo/playlist.
 
 ---
