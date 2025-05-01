@@ -279,6 +279,7 @@ for dirpath, dirnames, filenames in os.walk('caminho_inicial'):
 - `os.path.relpath()`: retorna a "diferença" entre os parâmetros
 
 ### 🧭 Próximos passos:
+- Adicionar possibilidade de adicionar várias músicas fora de uma playlist.
 - Adicionar botões de confirmação de download, mostrando informações sobre o vídeo/playlist.
 
 ---
