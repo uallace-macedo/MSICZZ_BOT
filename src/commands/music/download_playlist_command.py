@@ -1,3 +1,5 @@
+import os
+
 from telegram import Update
 from telegram.ext import ContextTypes
 
@@ -6,6 +8,7 @@ from pytubefix import Playlist
 from utils.download import download_music
 from utils.register import register_command
 from utils.text_format import get_final_url
+from utils.folders import zip_file, get_users_folder, delete_users_folder
 
 
 async def download_playlist_command(update: Update, _: ContextTypes.DEFAULT_TYPE):
@@ -31,39 +34,32 @@ async def download_playlist_command(update: Update, _: ContextTypes.DEFAULT_TYPE
 
   report = {'musics': musics, 'errors': errors}
 
-  await send_report(status_message, report)
-  # await send_musics(update, user_id)
+  await send_report(status_message, report, pl.title)
+  await send_musics(update, user_id, pl.title)
 
 
-async def send_report(status_message, report):
+async def send_report(status_message, report, title):
   musics = report['musics']
   errors = report['errors']
 
-  errors.append({'title': 'abc', 'error': 'Erro msg'})
-  errors.append({'title': 'abc2', 'error': 'Erro msg2'})
-  errors.append({'title': 'abc3', 'error': 'Erro msg3'})
-
   message = f"""
 [🎉] Download finalizado!
+→ Playlist: {title}
 → Downloads: {len(musics)} | Erros: {len(errors)}
-
-[🎸] Músicas baixadas:
 """
-
-  for index, music in enumerate(musics):
-    message += f'{index + 1} - {music}\n'
-
-  if len(errors) > 0:
-    message += f'\n[❌] Erros:'
-
-    for index, music in enumerate(errors):
-      message += f'{index + 1} - {music['title']}\n'
 
   await status_message.edit_text(message)
 
 
-async def send_musics(update, user_id):
-  ...
+async def send_musics(update: Update, user_id: int, title: str):
+  zip_name: str = os.path.join(os.curdir, 'downloads', 'zips', f'{str(user_id)}.zip')
+  users_folder: str = get_users_folder(user_id)
+
+  zip_path = zip_file(users_folder, zip_name)
+  await update.message.reply_document(zip_path, filename=f'{title}.zip')
+
+  os.remove(zip_path)
+  delete_users_folder(user_id)
 
 
 handler = register_command(
