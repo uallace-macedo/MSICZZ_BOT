@@ -2,14 +2,19 @@ import re
 
 
 def get_final_url(sent_url: str) -> str:
-  url_pattern: str = re.compile(r'<*(https:\/\/)?(www\.)?(youtu\.be|youtube\.com)\/[^>]+>*')
+  urls: list[str] = []
+  url_pattern: str = re.compile(r"[<]?(https:\/\/)?(www\.)?(youtu\.be|youtube\.com)\/([^\s<>'\,]+)[>]*")
 
-  url = re.search(url_pattern, sent_url)
-  if not url:
+  result = re.finditer(url_pattern, sent_url)
+
+  if not any(sent_url):
     return {'error': '[❌] Por favor, forneça uma URL válida!'}
 
-  final_url = re.sub(r'[<>]', '', url.group(0))
-  if not final_url.startswith('https://'):
-    final_url = f'https://{final_url}'
+  for r in result:
+      final_url = re.sub(r'[<>,]', '', r.group(0))
+      if not final_url.startswith('https://'):
+        final_url = f'https://{final_url}'
 
-  return final_url
+      urls.append(final_url)
+
+  return urls

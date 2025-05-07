@@ -3,25 +3,33 @@ from telegram.ext import ContextTypes
 
 from utils.register import register_command
 from utils.folders import delete_users_folder
-from utils.download import download_music
+from utils.download import download_music, send_musics
 from utils.text_format import get_final_url
 
 
 async def download_music_command(update: Update, _: ContextTypes.DEFAULT_TYPE):
   sent_url: str = update.message.text
-  final_url = get_final_url(sent_url)
+  to_download = get_final_url(sent_url)
 
-  if 'error' in final_url:
-    await update.message.reply_text(final_url['error'])
+  if 'error' in to_download:
+    await update.message.reply_text(to_download['error'])
+    return
 
   status_message = await update.message.reply_text('[⏳] Iniciando o download...')
-  download = download_music(final_url, update)
+  for link in to_download:
+    download = download_music(link, update)
 
-  if 'error' in download:
+  if len(to_download) == 1 and 'error' in download:
     await status_message.edit_text(download['error'])
     return
 
-  await send_music(update, status_message, download)
+
+  if len(to_download) == 1:
+    await send_music(update, status_message, download)
+    return
+
+  await status_message.edit_text('[🎉] Download finalizado!')
+  await send_musics(update, update.effective_user.id, 'Músicas')
 
 
 async def send_music(update, status_message, download):
