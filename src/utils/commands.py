@@ -1,3 +1,4 @@
+from commands import commands as commands_group
 from telegram.ext import BaseHandler
 from typing import Dict, Union
 
@@ -29,3 +30,13 @@ def get_commands(
       handlers.append(result)
 
   return handlers
+
+
+def get_command_details(command: str) -> str:
+
+  for category in commands_group:
+    for cm in category['commands']:
+      if(command in cm['id']):
+        return f'Comando: {command}\n{cm['long_desc']}\n'
+
+  return '[❌] Comando não encontrado!'

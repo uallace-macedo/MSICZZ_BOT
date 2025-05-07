@@ -44,5 +44,7 @@ async def send_music(update, status_message, download):
 handler = register_command(
   func=download_music_command,
   id='dwm',
-  desc='Faça o download de uma música, acrescido de &lt;URL&gt;'
+  desc='Faça o download de uma música, acrescido de &lt;URL&gt;',
+  long_desc='Faça o download da(s) música(s):\n\nExemplo: /dwm www.youtube.com/watch?v=UtF6Jej8yb4&ab_channel=AviciiOfficialVEVO' +
+  '\n\nVocê pode baixar várias músicas colocando uma vírgula entre os links.\n\nExemplo: /dwm www.youtube.com/watch?v=UtF6Jej8yb4&ab_channel=AviciiOfficialVEVO, https://www.youtube.com/watch?v=TRjLYpXeofA&ab_channel=MarianneBeaulieu-Topic\n\nObs: Só serão baixadas músicas com no máximo 10min10s de duração'
 )

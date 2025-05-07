@@ -54,5 +54,6 @@ async def send_report(status_message, report, title):
 handler = register_command(
   func=download_playlist_command,
   id=['dwp'],
-  desc='Faça o download de uma playlist pública, acrescido de &lt;URL&gt;'
+  desc='Faça o download de uma playlist pública, acrescido de &lt;URL&gt;',
+  long_desc='Faça o download de uma playlist pública.\n\nExemplo /dwp link_da_playlist\n\nObs: Só serão baixadas músicas com no máximo 10min10s de duração'
 )

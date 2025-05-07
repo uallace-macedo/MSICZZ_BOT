@@ -8,5 +8,6 @@ async def start_command(update: Update, _: ContextTypes.DEFAULT_TYPE):
 handler = register_command(
   func=start_command,
   id='start',
-  desc='Comando de inicio'
+  desc='Comando de inicio',
+  long_desc='Comando de inicio'
 )
