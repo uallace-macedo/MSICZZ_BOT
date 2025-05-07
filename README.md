@@ -8,9 +8,9 @@ Um bot criado com Python que permite baixar músicas e playlists diretamente do 
 
 - `/start` — Inicia a conversa com o BOT
 - `/help` — Mostra os comandos disponíveis
-- `/dwm <url>` — Baixa uma música do YouTube (duração <= 10m10s>)
-- `/dwm <url>, <url>, ...` — Baixa várias músicas do YouTube (duração <= 10m10s>)
-- `/dwp <url>` — Baixa uma playlist do YouTube (apenas músicas com duração <= 10m10s>)
+- `/dwm <url>` — Baixa uma música do YouTube (duração <= 10m10s)
+- `/dwm <url>, <url>, ...` — Baixa várias músicas do YouTube (duração <= 10m10s)
+- `/dwp <url>` — Baixa uma playlist do YouTube (apenas músicas com duração <= 10m10s)
 
 ---
 
