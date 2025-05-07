@@ -4,7 +4,8 @@ from typing import Callable, Union, Dict
 def register_command(
   func: Callable,
   id: Union[str, list[str]],
-  desc: str
+  desc: str,
+  long_desc: str
 ) -> Dict[str, Union[list[str], BaseHandler, str]]:
 
   if not isinstance(id, (list, str)):
@@ -16,5 +17,6 @@ def register_command(
   return {
     'id': cmds,
     'description': desc,
-    'cmd_handler': handler
+    'cmd_handler': handler,
+    'long_desc': long_desc
   }

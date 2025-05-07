@@ -1,6 +1,6 @@
 # 📘 Diário de Bordo – MsiczzBOT
 
-> Última atualização: 30/04/2025
+> Última atualização: 07/05/2025
 > Autor: Jonathas Uallace Macedo Santos
 > Status: 🌀 Em andamento
 
@@ -281,5 +281,16 @@ for dirpath, dirnames, filenames in os.walk('caminho_inicial'):
 ### 🧭 Próximos passos:
 - Adicionar explicação detalhada de comando `/help command`
 - Adicionar possibilidade de adicionar várias músicas fora de uma playlist
+
+---
+
+## 📅 Dia 7
+
+### ✅ Feito hoje:
+- Adicionada explicação detalhada de comando, utilizando: `/help command`
+- Adicionada possibilidade de adicionar várias músicas fora de uma playlist, utilizando vírgulas ou espaços
+
+### 🧭 Próximos passos:
+- Adicionar iteração com botões para confirmação de download de música(s)/playlist.
 
 ---
